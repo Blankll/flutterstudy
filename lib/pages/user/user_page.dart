@@ -9,7 +9,18 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('user page'),),
+      body: Center(child: Container(
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+              child: Text('LOGIN'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+            )
+          ],
+        ),
+      )),
     );
   }
 }

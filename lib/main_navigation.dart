@@ -27,6 +27,7 @@ class _MainNavigationState extends State<MainNavigation> {
       appBar: AppBar(
         title: Text('SEVEN'),
         centerTitle: true,
+        elevation: 2.0,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search),)
         ],
