@@ -49,6 +49,7 @@ class _HomeBodyListState extends State<HomeBodyList> {
                     SizedBox(height: 5.0,), 
                     Container(
                       padding: EdgeInsets.all(10.0),
+                      color: Color.fromRGBO(255, 255, 255, 0.7),
                       child: Text(
                         item.description,
                         style: Theme.of(context).textTheme.subtitle,

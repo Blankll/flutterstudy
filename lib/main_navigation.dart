@@ -29,7 +29,10 @@ class _MainNavigationState extends State<MainNavigation> {
         centerTitle: true,
         elevation: 2.0,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.search),)
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () => {},
+          )
         ],
       ),
       body: bottomBars[_currentIndex],
