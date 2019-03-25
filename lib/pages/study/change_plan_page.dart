@@ -28,14 +28,63 @@ class _ChangePlanPageState extends State<ChangePlanPage> {
           Container(
             child: Row(
               children: <Widget>[
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      Text('基础一')
-                    ],
+                Card(
+                  elevation: 4.0,
+                  child: Container(
+                    width: 100.0,
+                    height: 130.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage('http://apitrans.geekfun.club/statics/images/upload/2018-11-16/154237510990031.jpeg'),
+                        fit: BoxFit.cover
+                      )
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 80.0,
+                        ),
+                        Text('基础一')
+                      ],
+                    )
                   ),
                 )
               ],
+            ),
+          ),
+          Stack(
+            alignment: Alignment.topRight,
+            children: <Widget>[
+              Divider(
+                height: 56.0,
+              ),
+              Container(
+                margin: EdgeInsets.only(right: 10.0),
+                child: FloatingActionButton(
+                  backgroundColor: Colors.pink,
+                  elevation: 8.0,
+                  child: Icon(
+                    Icons.add,
+                    size: 30.0,
+                    color: Colors.blue[100],
+                  ),
+                  onPressed: () {
+
+                  },
+                ),
+              )
+            ],
+          ),
+          // 设置学习计划
+          Container(
+            child: Slider(
+              value: 10,
+              min: 0,
+              max: 100,
+              divisions: 1,
+              onChanged: (changedValue) {
+                
+              },
             ),
           )
         ],
