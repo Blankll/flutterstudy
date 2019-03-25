@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/entities/user.dart';
+import 'package:flutterstudy/models/user_model.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -6,6 +8,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String _name;
+  String _password;
+  List<Widget> _messages = [];
+
   @override
   Widget build(BuildContext context) {
     final loginButton = Container(
@@ -18,7 +24,14 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed('/home');
+          User user = new User(name: _name, password: _password);
+          UserModel.login(user)
+          .then((res) => Navigator.of(context).pushNamed('/home'))
+          .catchError((err) {
+            setState(() {
+              _messages.add(Text(err.toString()));
+            });
+          });
         },
         // padding: EdgeInsets.all(12),
         color: Colors.lightBlueAccent,
@@ -33,6 +46,13 @@ class _LoginPageState extends State<LoginPage> {
       onPressed: () {
 
       },
+    );
+
+    final errorSHow = Container(
+      height: 100.0,
+      child: ListView(
+        children: _messages
+      )
     );
     return Scaffold(
       body: Column(
@@ -54,6 +74,11 @@ class _LoginPageState extends State<LoginPage> {
               hintText: 'plese input login name',
               prefixIcon: Icon(Icons.person)
             ),
+            onChanged: (String input) {
+              setState(() {
+                _name =input;
+              });
+            },
           ),
           TextField(
             decoration: InputDecoration(
@@ -62,9 +87,15 @@ class _LoginPageState extends State<LoginPage> {
               prefixIcon: Icon(Icons.lock)
             ),
             obscureText: true,
+            onChanged: (String input) {
+              setState(() {
+                _password = input;
+              });
+            },
           ),
           loginButton,
-          forgotLabel
+          forgotLabel,
+          errorSHow
         ],
       )
     );

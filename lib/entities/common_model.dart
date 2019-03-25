@@ -5,7 +5,7 @@ class CommonModel {
 
   CommonModel({
     this.icon, this.title, this.url
-  })
+  });
 
   factory CommonModel.fromJson(Map<String, dynamic> json) {
     return CommonModel(
